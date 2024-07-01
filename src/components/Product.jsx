@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import toast from 'react-hot-toast/headless'
+import toast from 'react-hot-toast'
 import { add, remove } from '../redux/slices/cartSlice'
 
 const Product = ({post}) => {
@@ -17,20 +17,19 @@ const Product = ({post}) => {
   }
 
   return (
-    <div>
+    <div className='flex flex-col justify-center items-center hover:scale-110 transition duration-300 ease-in gap-3 p-4 mt-10 ml-5 rounded-xl outline'>
       <div>
-        <p>{post.title}</p>
+        <p className='text-gray-700 font-semibold text-lg text-left truncate w-40 mt-1'>{post.title}</p>
       </div>
       <div>
-        <p>{post.description}</p>
+        <p className='w-40 text-gray-400 font-normal text-[10px] text-left'>{post.description.split(" ").slice(0, 10).join(" ") + "..."}</p>
       </div>
-      <div>
-        <img src={`${post.image}`} alt="" />
+      <div className='h-[180px]'>
+        <img src={`${post.image}`} alt="" className='h-full w-full'/>
       </div>
-      <div>
+      <div className='flex '>
         <p>{post.price}</p>
-      </div>
-      {
+        {
         cart.some((p) => p.id == post.id) ?
         (<button onClick={removeFromCart}>
           Remove Item
@@ -39,6 +38,8 @@ const Product = ({post}) => {
           Add to Cart
         </button>)
       }
+      </div>
+      
     </div>
   )
 }
