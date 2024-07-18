@@ -27,14 +27,14 @@ const Product = ({post}) => {
       <div className='h-[180px]'>
         <img src={`${post.image}`} alt="" className='h-full w-full'/>
       </div>
-      <div className='flex '>
-        <p>{post.price}</p>
+      <div className='flex justify-between items-center gap-12'>
+        <p className='text-[#04562b] font-bold '>${post.price}</p>
         {
-        cart.some((p) => p.id == post.id) ?
-        (<button onClick={removeFromCart}>
+        cart.some((p) => p.id === post.id) ?
+        (<button className='border-2 border-black rounded-full bg-[#c7bdbd] p-2 hover:bg-[#272525] font-semibold hover:text-white transition duration-300 ease-in' onClick={removeFromCart}>
           Remove Item
         </button>) :
-        (<button onClick={addToCart}>
+        (<button className='border-2 border-black rounded-full bg-[#c7bdbd] p-2 hover:bg-[#272525] font-semibold hover:text-white transition duration-300 ease-in' onClick={addToCart}>
           Add to Cart
         </button>)
       }

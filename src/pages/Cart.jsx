@@ -16,23 +16,27 @@ const Cart = () => {
     <div>
       {
         cart.length > 0 ?
-        (<div>
-          <div>
+        (<div className='flex justify-around w-[70vw] gap-20 mx-auto'>
+          <div className='flex flex-col '>
           {
             cart.map((item, index) => {
               return <Cartitem key = {item.id} item = {item} itemIndex = {index} />
             })
           }
+          
           </div>
 
           <div>
 
-            <div>
-              <div>Your Cart</div>
+            <div className='flex flex-col justify-between py-3 h-[80vh]'>
+              <div>
+              <div className='text-green-600 text-3xl pt-5'>Your Cart</div>
               <div>Summary</div>
               <p>
                 <span>Total Items: {cart.length}</span>
               </p>
+              </div>
+              
             </div>
 
             <div>
